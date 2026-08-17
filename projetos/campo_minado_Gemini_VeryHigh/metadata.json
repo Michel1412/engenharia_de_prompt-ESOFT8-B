@@ -1,0 +1,6 @@
+{
+  "name": "Campo Minado Pro",
+  "description": "Jogo de Campo Minado avançado com proteção de primeiro clique, chording, dificuldades clássicas e personalizadas, suporte mobile e design moderno.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

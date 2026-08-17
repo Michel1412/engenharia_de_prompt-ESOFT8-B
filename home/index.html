@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campos Minados — Trabalho 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hub-header" aria-label="Seletor de experimentos">
+      <div class="hub-header__inner">
+        <div class="hub-brand">
+          <p class="eyebrow">Laboratório</p>
+          <h1 class="hub-title">Campos Minados</h1>
+        </div>
+        <div id="cards" class="cards" role="list"></div>
+        <div class="hub-actions">
+          <p id="status" class="status" role="status"></p>
+          <button id="open-btn" type="button" disabled>Abrir em nova aba</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="deck-shell">
+      <section
+        class="deck"
+        aria-roledescription="carousel"
+        aria-label="Apresentação Trabalho 1"
+      >
+        <div id="slides" class="slides" aria-live="polite"></div>
+
+        <div class="deck-controls">
+          <button id="prev-btn" type="button" class="nav-btn" aria-label="Slide anterior">
+            ←
+          </button>
+          <div id="dots" class="dots" role="tablist" aria-label="Slides"></div>
+          <button id="next-btn" type="button" class="nav-btn" aria-label="Próximo slide">
+            →
+          </button>
+        </div>
+        <p id="slide-counter" class="slide-counter" aria-hidden="true"></p>
+      </section>
+    </main>
+
+    <footer class="agent-footer" id="agent-footer">
+      <p class="agent-footer__label">Sobre este agente</p>
+      <div class="agent-footer__body">
+        <p>
+          Sou o agente deste laboratório Campos Minados. Comparo o mesmo tipo de
+          jogo gerado por IAs diferentes em
+          <code>projetos/&lt;slug&gt;/</code>, gravo evidência em
+          <code>resume.md</code> com <code>/observable</code> e
+          <strong>não invento tokens</strong> — se o dashboard não estiver
+          acessível, registro “não disponível” e aponto
+          <a href="https://cursor.com/dashboard/usage" rel="noopener" target="_blank"
+            >cursor.com/dashboard/usage</a
+          >.
+        </p>
+        <p>
+          Este hub fica em <code>/</code>; cada experimento abre em
+          <code>/{modelo}/{projeto}/</code> no mesmo domínio. O build de Pages
+          (Actions) espelha <code>home/</code> em <code>site/</code> para
+          publicar o preview.
+        </p>
+        <p class="agent-footer__note">
+          Material secundário — depois do pitch dos slides acima.
+        </p>
+      </div>
+    </footer>
+
+    <script src="presentation-data.js"></script>
+    <script src="app.js"></script>
+    <script src="presentation.js"></script>
+  </body>
+</html>

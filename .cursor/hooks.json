@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "python .cursor/hooks/session_start.py"
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "command": "python .cursor/hooks/before_submit_prompt.py"
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "command": "python .cursor/hooks/after_file_edit.py"
+      }
+    ],
+    "sessionEnd": [
+      {
+        "command": "python .cursor/hooks/session_end.py"
+      }
+    ]
+  }
+}

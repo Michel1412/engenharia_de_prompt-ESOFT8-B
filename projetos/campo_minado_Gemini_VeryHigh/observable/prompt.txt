@@ -1,0 +1,17 @@
+Você atuará como um Engenheiro de Software Sênior . Sua tarefa é desenvolver um jogo de Campo Minado (Minesweeper) avançado, escalável e com código limpo, utilizando React com TypeScript e Tailwind CSS.
+Leia atentamente as seções abaixo antes de começar.
+<arquitetura_e_regras>
+Padrão de Projeto: Separe rigorosamente a Lógica de Negócios (Engine) da Interface Visual (UI). O estado do jogo não deve se misturar com a renderização.
+Estrutura de Dados: O grid deve ser uma matriz 2D onde cada célula é um objeto com os estados: isMine, isRevealed, isFlagged e neighborMines.
+Proteção do 1º Clique: A geração aleatória das minas DEVE ocorrer apenas APÓS o primeiro clique do usuário. A célula clicada inicialmente deve ter sempre o valor 0 (sem minas nela e nas vizinhas imediatas).
+Algoritmos Core:
+Implemente BFS ou DFS para a mecânica de "Flood Fill" (abertura em cadeia de células vazias).
+Implemente um algoritmo eficiente para varredura das 8 direções adjacentes.
+Mecânica de "Chording" (Avançado): Clique duplo (ou equivalente) em uma célula numerada revelada deve abrir seus vizinhos fechados se, e somente se, o número exato de bandeiras estiver ao redor dela. Se as bandeiras estiverem erradas, é Game Over.
+</arquitetura_e_regras>
+<interface_e_ux>
+Dificuldades: Iniciante (9x9, 10 minas), Intermediário (16x16, 40 minas), Especialista (30x16, 99 minas) e Customizado.
+HUD Dinâmico: Exiba um contador de minas (Minas Totais - Bandeiras), um cronômetro e um botão de Reset.
+Design Responsivo: A interface deve se adaptar perfeitamente a dispositivos móveis. Inclua uma lógica para o Mobile.
+Condição de Derrota: Revele todas as minas. Destaque a mina que causou a explosão (background vermelho) e marque com um "X" as bandeiras colocadas onde não havia minas.
+</interface_e_ux>

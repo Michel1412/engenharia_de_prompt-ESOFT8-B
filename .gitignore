@@ -1,0 +1,14 @@
+.observable/sessions/
+.observable/latest.json
+.observable/*.tmp
+home/grok-4-6-high-fast/
+home/gemini-3-7-flash/
+home/auto/
+site/
+projetos/**/node_modules/
+projetos/**/dist/
+__pycache__/
+.cursor/hooks/__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

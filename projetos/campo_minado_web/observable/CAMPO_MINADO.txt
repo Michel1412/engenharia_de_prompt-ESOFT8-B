@@ -1,0 +1,273 @@
+Trabalho Prático 1 — Engenharia de Prompt e Contexto na Prática
+1. Descrição do Projeto
+O projeto desenvolvido consiste em um jogo de Campo Minado Web, criado com auxílio do Google AI Studio.
+O sistema permite que o jogador escolha diferentes níveis de dificuldade e jogue seguindo as regras tradicionais do Campo Minado.
+As principais funcionalidades implementadas são:
+geração aleatória de minas;
+revelação das células do tabuleiro;
+exibição da quantidade de minas adjacentes;
+colocação e remoção de bandeiras;
+contador de minas;
+cronômetro;
+reinício da partida;
+condição de vitória;
+condição de derrota;
+seleção de dificuldade;
+seleção de cenário visual.
+Os níveis de dificuldade disponíveis são:
+Fácil: 9 × 9, com 10 minas;
+Médio: 16 × 16, com 40 minas;
+Difícil: 16 × 30, com 99 minas.
+Também foram implementados quatro cenários visuais:
+Clássico Verde;
+Noite;
+Neve;
+Deserto.
+A troca de cenário modifica somente a aparência do jogo, preservando o tabuleiro, a posição das minas, o cronômetro e o andamento da partida.
+
+2. Ferramentas e Modelo Utilizado
+Ferramenta principal: Google AI Studio — Build
+API utilizada para medição: Gemini API
+Modelo: Gemini 3.7 Flash
+Model version retornada pela API: gemini-3.7-flash
+Service Tier: standard
+Thinking Level: não especificado explicitamente nas requisições realizadas pela API. Foi utilizado o comportamento padrão do modelo.
+
+3. Técnica de Prompt Engineering Utilizada
+A técnica de Prompt Engineering escolhida foi o Few-shot Prompting.
+Essa técnica foi utilizada porque o Campo Minado possui comportamentos específicos que precisam ser interpretados corretamente pelo modelo.
+Foram fornecidos exemplos concretos do comportamento esperado.
+Exemplos utilizados
+Exemplo 1:Se o jogador clicar com o botão direito em uma célula fechada sem bandeira, o sistema deve colocar uma bandeira nessa célula.
+Exemplo 2:Se o jogador clicar novamente com o botão direito em uma célula que já possui bandeira, o sistema deve remover essa bandeira.
+Exemplo 3:Se o jogador revelar uma célula que possui zero minas adjacentes, o jogo deve revelar automaticamente as células seguras vizinhas de acordo com as regras tradicionais do Campo Minado.
+Exemplo 4:Se o jogador selecionar o cenário Noite, apenas a aparência da interface deve mudar. A quantidade e a posição das minas não devem ser modificadas por causa da troca de cenário.
+Justificativa
+O Few-shot foi escolhido porque permite fornecer ao modelo exemplos claros de como determinadas interações do sistema devem funcionar.
+No contexto do Campo Minado, isso ajudou a reduzir ambiguidades, principalmente em comportamentos relacionados ao uso de bandeiras, abertura automática de células e troca de cenários sem alterar o estado da partida.
+
+4. System Prompt
+O System Prompt foi definido antes do início da implementação do projeto.
+System Prompt utilizado
+Você é um desenvolvedor de software especializado em desenvolvimento web front-end, com foco em HTML, CSS e JavaScript.
+Sua função é auxiliar no desenvolvimento de um jogo Campo Minado Web completo, funcional, responsivo e organizado.
+Durante o desenvolvimento, siga estas regras:
+Utilize HTML, CSS e JavaScript de forma clara e organizada.
+Priorize código simples, legível e fácil de manter.
+Não utilize bibliotecas ou frameworks externos sem necessidade.
+Separe adequadamente estrutura, estilo e lógica da aplicação.
+Preserve funcionalidades já implementadas ao realizar alterações.
+Não remova funcionalidades existentes sem solicitação explícita.
+Explique de forma objetiva mudanças importantes realizadas no projeto.
+Evite adicionar funcionalidades que não tenham sido solicitadas.
+O jogo deve funcionar diretamente no navegador.
+O Campo Minado deverá possuir como funcionalidades principais:
+geração aleatória de minas;
+revelação de células;
+indicação numérica da quantidade de minas próximas;
+colocação e remoção de bandeiras;
+contador de minas/bandeiras;
+cronômetro da partida;
+condição de vitória;
+condição de derrota;
+possibilidade de reiniciar a partida;
+níveis de dificuldade Fácil, Médio e Difícil;
+seleção de diferentes cenários visuais pelo jogador.
+Os cenários visuais iniciais serão:
+Clássico Verde;
+Noite;
+Neve;
+Deserto.
+A escolha do cenário deve modificar apenas a aparência visual da aplicação, sem alterar as regras, a distribuição das minas ou a dificuldade da partida.
+Sempre considere as regras fornecidas pelo usuário e o contexto disponível antes de modificar o código. Quando apenas uma parte do projeto precisar ser alterada, evite mudanças desnecessárias em arquivos ou funcionalidades não relacionadas.
+Justificativa do System Prompt
+O System Prompt foi criado para estabelecer previamente:
+o papel da IA;
+o tipo de aplicação;
+as tecnologias desejadas;
+as funcionalidades obrigatórias;
+as restrições do desenvolvimento;
+o comportamento esperado durante alterações futuras.
+Essa definição ajudou a manter o desenvolvimento dentro do escopo e reduziu alterações desnecessárias no projeto.
+
+5. Primeira Chamada — Criação do Campo Minado
+Ferramenta: Google AI Studio BuildModelo: Gemini 3.7 FlashResultado: sucesso
+Objetivo
+Criar a primeira versão funcional do Campo Minado contendo:
+tabuleiro;
+geração aleatória de minas;
+bandeiras;
+contador;
+cronômetro;
+dificuldades;
+condições de vitória e derrota;
+reinício;
+cenários visuais.
+Prompt utilizado
+Crie a primeira versão funcional do projeto Campo Minado Web.
+Nesta primeira versão, implemente:
+interface principal do jogo;
+tabuleiro funcional;
+geração aleatória de minas;
+revelação de células;
+números indicando minas adjacentes;
+colocação e remoção de bandeiras com o botão direito;
+contador de minas;
+cronômetro;
+condição de vitória e derrota;
+botão para reiniciar;
+seletor de dificuldade com Fácil, Médio e Difícil;
+seletor de cenário com Clássico Verde, Noite, Neve e Deserto.
+O visual inicial pode utilizar o cenário Clássico Verde como padrão.
+Foram utilizados também os exemplos Few-shot descritos anteriormente.
+Após a geração, todas as funcionalidades principais foram testadas e estavam funcionando corretamente.
+Tokens
+Os tokens dessa chamada realizada pelo modo Build não foram coletados no momento da execução.
+Por esse motivo, não foram adicionados valores estimados ou inventados.
+
+6. Segunda Chamada — Melhoria dos Cenários
+Ferramenta: Google AI Studio BuildModelo: Gemini 3.7 FlashResultado: sucesso
+Objetivo
+Melhorar visualmente os quatro cenários do jogo sem alterar a lógica já existente.
+Foi solicitado que fossem mantidos:
+Clássico Verde;
+Noite;
+Neve;
+Deserto.
+Também foi solicitado que a troca de cenário não:
+reiniciasse a partida;
+alterasse a posição das minas;
+zerasse o cronômetro;
+modificasse as dificuldades.
+Tokens
+Os tokens dessa chamada realizada pelo modo Build não foram coletados no momento da execução.
+Por isso, não foram utilizados valores estimados.
+
+7. Teste de Curadoria de Contexto
+Foi realizado um experimento para comparar o consumo de tokens ao fornecer quantidades diferentes de contexto para a mesma tarefa.
+A mesma solicitação foi executada duas vezes.
+Pergunta utilizada nos dois testes
+“Adicione uma pequena descrição abaixo da dificuldade atualmente selecionada, mostrando o tamanho do tabuleiro e a quantidade de minas. Exemplo: ‘9 × 9 — 10 minas’. Faça isso sem alterar nenhuma outra funcionalidade do componente.”
+
+8. Teste A — Contexto Completo
+No primeiro teste foi enviado o arquivo DifficultySelector.tsx completo junto com a solicitação.
+Dados retornados pela Gemini API
+Modelo: Gemini 3.7 Flash
+Tokens de entrada — promptTokenCount: 751
+Tokens de saída — candidatesTokenCount: 774
+Total informado pela API — totalTokenCount: 2808
+O arquivo JSON desta chamada não foi localizado posteriormente. Por isso, não será informado um número de thinking tokens sem evidência.
+
+9. Teste B — Contexto Curado
+No segundo teste foi enviada exatamente a mesma solicitação, porém somente com o trecho relevante do componente.
+Dados retornados pela Gemini API
+Modelo: Gemini 3.7 Flash
+Tokens de entrada — promptTokenCount: 308
+Tokens de saída — candidatesTokenCount: 368
+Tokens de pensamento — thoughtsTokenCount: 651
+Total — totalTokenCount: 1327
+Service Tier: standard
+Conferência
+308 tokens de entrada
+368 tokens de saída
+651 tokens de pensamento= 1327 tokens totais
+
+10. Thinking Level
+Nas chamadas realizadas pela API, não foi enviado manualmente nenhum parâmetro de thinkingLevel.
+Portanto, o registro correto é:
+Thinking Level: não especificado explicitamente / padrão do modelo.
+Não é correto afirmar que foi utilizado Low, Medium, High ou Very High, pois esse nível não foi configurado explicitamente nem retornado na resposta JSON.
+Entretanto, no Teste B a API comprovou o uso de raciocínio interno através do campo:
+thoughtsTokenCount: 651
+
+11. Comparação de Tokens
+Teste
+Input
+Output
+Thinking
+Contexto completo
+751
+774
+Não comprovado
+Contexto curado
+308
+368
+651
+Redução de tokens de entrada
+751 - 308 = 443 tokens
+Redução aproximada:
+59,0%
+Redução de tokens de saída
+774 - 368 = 406 tokens
+Redução aproximada:
+52,5%
+
+12. Preços do Modelo
+Os preços registrados para o Gemini 3.7 Flash foram:
+Input: US$ 0,75 por 1 milhão de tokens
+Output: US$ 3,75 por 1 milhão de tokens
+
+13. Custo do Teste A — Contexto Completo
+Entrada
+751 / 1.000.000 × US$ 0,75= US$ 0,00056325
+Saída
+774 / 1.000.000 × US$ 3,75= US$ 0,00290250
+Custo estimado total
+US$ 0,00346575
+
+14. Custo do Teste B — Contexto Curado
+Entrada
+308 / 1.000.000 × US$ 0,75= US$ 0,00023100
+Saída
+368 / 1.000.000 × US$ 3,75= US$ 0,00138000
+Custo estimado total
+US$ 0,00161100
+
+15. Comparação de Custos
+Teste
+Custo estimado
+Contexto completo
+US$ 0,00346575
+Contexto curado
+US$ 0,00161100
+Diferença:
+US$ 0,00346575 - US$ 0,00161100= US$ 0,00185475
+Redução aproximada no custo:
+53,5%
+
+16. Conclusão do Teste de Curadoria
+O experimento demonstrou que fornecer somente o contexto necessário pode diminuir significativamente o consumo de tokens.
+No teste com o arquivo completo foram utilizados 751 tokens de entrada.
+Com o contexto curado foram utilizados 308 tokens de entrada.
+Isso representou uma redução aproximada de 59% nos tokens de entrada.
+O custo estimado considerando tokens de entrada e saída também caiu aproximadamente 53,5%.
+O resultado demonstra que a curadoria de contexto pode reduzir o consumo de tokens e o custo das chamadas sem impedir que o modelo receba as informações necessárias para responder à tarefa.
+
+17. Evidências
+Foram coletadas capturas de tela durante o desenvolvimento para comprovar:
+definição do System Prompt;
+uso da técnica Few-shot;
+primeiro prompt de desenvolvimento;
+primeira versão funcional do Campo Minado;
+funcionamento dos cenários;
+segunda chamada de melhoria;
+estrutura de código do projeto;
+teste com contexto completo;
+teste com contexto curado;
+tokens retornados pela Gemini API;
+preço do modelo;
+comparação dos resultados;
+aplicação funcionando.
+Também foram utilizados os arquivos JSON gerados pela API como evidência dos dados coletados.
+
+18. URL Publicada
+URL do projeto:[INSERIR URL FINAL DO CAMPO MINADO]
+
+19. Repositório GitHub
+Repositório:[INSERIR URL DO GITHUB]
+O usuário @pedrosatin deverá estar adicionado como collaborator do repositório.
+
+20. Integrantes
+Nome: [INSERIR NOME]RA: [INSERIR RA]
+Nome: [INSERIR NOME]RA: [INSERIR RA]
+Nome: [INSERIR NOME]RA: [INSERIR RA]

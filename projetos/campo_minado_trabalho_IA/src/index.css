@@ -1,0 +1,80 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --color-ink: #0b1612;
+  --color-pine: #143328;
+  --color-moss: #1f4d3a;
+  --color-foam: #d7efe4;
+  --color-signal: #e4b24a;
+  --color-ember: #d4654a;
+  --color-mist: #8fb9a6;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-foam);
+  background: var(--color-ink);
+}
+
+@keyframes board-shake {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-3px, 2px) rotate(-0.4deg);
+  }
+  40% {
+    transform: translate(3px, -2px) rotate(0.4deg);
+  }
+  60% {
+    transform: translate(-2px, -1px) rotate(-0.2deg);
+  }
+  80% {
+    transform: translate(2px, 1px) rotate(0.2deg);
+  }
+}
+
+@keyframes card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(228 178 74 / 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgb(228 178 74 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(228 178 74 / 0);
+  }
+}
+
+.board-shake {
+  animation: board-shake 0.35s linear infinite;
+}
+
+.card-rise {
+  animation: card-rise 0.45s ease-out both;
+}
+
+.hint-pulse {
+  animation: pulse-ring 1.4s ease-out infinite;
+}

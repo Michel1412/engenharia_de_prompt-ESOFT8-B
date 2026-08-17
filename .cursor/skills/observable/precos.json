@@ -1,0 +1,91 @@
+{
+  "unidade": "USD / 1M tokens",
+  "fonte": "https://cursor.com/docs/models",
+  "atualizado_em": "2026-08-16",
+  "modelos": [
+    {
+      "nome": "Cursor Grok 4.6",
+      "aliases": ["grok-4.6", "grok 4.6", "cursor-grok-4.6", "cursor grok 4.6"],
+      "input_usd_por_1m": 2.0,
+      "output_usd_por_1m": 6.0
+    },
+    {
+      "nome": "Cursor Grok 4.6 Fast",
+      "aliases": ["grok-4.6-fast", "grok 4.6 fast"],
+      "input_usd_por_1m": 4.0,
+      "output_usd_por_1m": 12.0
+    },
+    {
+      "nome": "Cursor Grok 4.5",
+      "aliases": ["grok-4.5", "grok 4.5"],
+      "input_usd_por_1m": 2.0,
+      "output_usd_por_1m": 6.0
+    },
+    {
+      "nome": "Composer 2.5",
+      "aliases": ["composer-2.5", "composer 2.5"],
+      "input_usd_por_1m": 0.5,
+      "output_usd_por_1m": 2.5
+    },
+    {
+      "nome": "Composer 2.5 Fast",
+      "aliases": ["composer-2.5-fast", "composer 2.5 fast"],
+      "input_usd_por_1m": 3.0,
+      "output_usd_por_1m": 15.0
+    },
+    {
+      "nome": "Claude 4.6 Sonnet",
+      "aliases": ["claude-4.6-sonnet", "claude 4.6 sonnet", "claude-4-6-sonnet"],
+      "input_usd_por_1m": 3.0,
+      "output_usd_por_1m": 15.0
+    },
+    {
+      "nome": "Claude 4.6 Opus",
+      "aliases": ["claude-4.6-opus", "claude 4.6 opus", "claude-4-6-opus"],
+      "input_usd_por_1m": 5.0,
+      "output_usd_por_1m": 25.0
+    },
+    {
+      "nome": "Claude Opus 5",
+      "aliases": ["claude-opus-5", "claude opus 5"],
+      "input_usd_por_1m": 5.0,
+      "output_usd_por_1m": 25.0
+    },
+    {
+      "nome": "Claude Sonnet 5",
+      "aliases": ["claude-sonnet-5", "claude sonnet 5"],
+      "input_usd_por_1m": 2.0,
+      "output_usd_por_1m": 10.0
+    },
+    {
+      "nome": "GPT-5.6 Sol",
+      "aliases": ["gpt-5.6-sol", "gpt 5.6 sol", "gpt-5.6"],
+      "input_usd_por_1m": 5.0,
+      "output_usd_por_1m": 30.0
+    },
+    {
+      "nome": "GPT-5.6 Terra",
+      "aliases": ["gpt-5.6-terra", "gpt 5.6 terra"],
+      "input_usd_por_1m": 2.0,
+      "output_usd_por_1m": 12.0
+    },
+    {
+      "nome": "GPT-5.6 Luna",
+      "aliases": ["gpt-5.6-luna", "gpt 5.6 luna"],
+      "input_usd_por_1m": 0.2,
+      "output_usd_por_1m": 1.2
+    },
+    {
+      "nome": "Gemini 3.1 Pro",
+      "aliases": ["gemini-3.1-pro", "gemini 3.1 pro"],
+      "input_usd_por_1m": 2.0,
+      "output_usd_por_1m": 12.0
+    },
+    {
+      "nome": "Gemini 3.7 Flash",
+      "aliases": ["gemini-3.7-flash", "gemini 3.7 flash", "gemini"],
+      "input_usd_por_1m": 0.75,
+      "output_usd_por_1m": 3.75
+    }
+  ]
+}

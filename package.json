@@ -1,0 +1,8 @@
+{
+  "name": "campos-minados",
+  "private": true,
+  "scripts": {
+    "build:pages": "node scripts/build-pages.mjs",
+    "preview": "python lab_server.py"
+  }
+}

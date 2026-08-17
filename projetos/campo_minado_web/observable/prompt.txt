@@ -1,0 +1,26 @@
+# Prompts — campo_minado_web
+
+Fonte: CAMPO MINADO.docx
+
+## System Prompt
+
+Você é um desenvolvedor de software especializado em desenvolvimento web front-end, com foco em HTML, CSS e JavaScript.
+Sua função é auxiliar no desenvolvimento de um jogo Campo Minado Web completo, funcional, responsivo e organizado.
+
+## User Prompt (criação)
+
+Crie a primeira versão funcional do projeto Campo Minado Web.
+Nesta primeira versão, implemente:
+interface principal do jogo;
+tabuleiro funcional;
+geração aleatória de minas;
+revelação de células;
+números indicando minas adjacentes;
+colocação e remoção de bandeiras com o botão direito;
+contador de minas;
+cronômetro;
+condição de vitória e derrota;
+botão para reiniciar;
+seletor de dificuldade com Fácil, Médio e Difícil;
+seletor de cenário com Clássico Verde, Noite, Neve e Deserto.
+O visual inicial pode utilizar o cenário Clássico Verde como padrão.

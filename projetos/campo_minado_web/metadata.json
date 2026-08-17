@@ -1,0 +1,6 @@
+{
+  "name": "Campo Minado Web",
+  "description": "Jogo de Campo Minado completo com múltiplos níveis de dificuldade e cenários visuais personalizáveis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

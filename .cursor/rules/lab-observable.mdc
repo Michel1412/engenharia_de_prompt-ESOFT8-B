@@ -1,0 +1,14 @@
+---
+description: Laboratório Campos Minados — experimentos multi-IA e comando /observable
+alwaysApply: true
+---
+
+# Laboratório Campos Minados
+
+Ambiente para gerar o mesmo tipo de projeto com IAs diferentes e comparar o resultado.
+
+- Cada experimento vive em `projetos/<nnn>-<slug>-<modelo>/`.
+- O prompt compartilhado fica em `prompts/input-padrao.md`.
+- Quando o usuário escrever `/observable` (ou pedir o resume do experimento), siga `.cursor/skills/observable/SKILL.md` e grave `resume.md` nesse projeto.
+- Não invente tokens. Se o dashboard não estiver acessível, escreva `não disponível` e mantenha o link `https://cursor.com/dashboard/usage`.
+- Não misture código de um experimento com outro.
