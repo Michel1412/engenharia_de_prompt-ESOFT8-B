@@ -4,6 +4,12 @@
   "atualizado_em": "2026-08-16",
   "modelos": [
     {
+      "nome": "Cursor Auto (Auto Cost)",
+      "aliases": ["auto", "cursor auto", "auto cost"],
+      "input_usd_por_1m": 1.25,
+      "output_usd_por_1m": 6.0
+    },
+    {
       "nome": "Cursor Grok 4.6",
       "aliases": ["grok-4.6", "grok 4.6", "cursor-grok-4.6", "cursor grok 4.6"],
       "input_usd_por_1m": 2.0,

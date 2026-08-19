@@ -36,6 +36,7 @@ rmSync(site, { recursive: true, force: true });
 mkdirSync(site, { recursive: true });
 
 cpSync(join(root, "home"), site, { recursive: true });
+cpSync(join(root, "imagens"), join(site, "imagens"), { recursive: true });
 writeFileSync(join(site, ".nojekyll"), "");
 writeFileSync(
   join(site, "404.html"),

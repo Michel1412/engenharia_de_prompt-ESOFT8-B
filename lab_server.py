@@ -11,6 +11,7 @@ from urllib.parse import unquote, urlparse
 ROOT = Path(__file__).resolve().parent
 HOME = ROOT / "home"
 SITE = ROOT / "site"
+IMAGENS = ROOT / "imagens"
 HOST = "127.0.0.1"
 PORT = 8080
 
@@ -65,12 +66,50 @@ def first_file(candidates: list[Path]) -> Path | None:
     return None
 
 
+def resolve_imagens_static(parts: list[str]) -> Path | None:
+    if not parts or parts[0] != "imagens":
+        return None
+    rest = parts[1:]
+    target = (IMAGENS / Path(*rest)).resolve() if rest else IMAGENS.resolve()
+    try:
+        target.relative_to(IMAGENS.resolve())
+    except ValueError:
+        return None
+    if target.is_file():
+        return target
+    if target.is_dir():
+        index = target / "index.html"
+        if index.is_file():
+            return index
+    return None
+
+
+def resolve_home_static(parts: list[str]) -> Path | None:
+    if not parts:
+        return HOME / "index.html"
+    target = (HOME / Path(*parts)).resolve()
+    try:
+        target.relative_to(HOME.resolve())
+    except ValueError:
+        return None
+    if target.is_file():
+        return target
+    if target.is_dir():
+        index = target / "index.html"
+        if index.is_file():
+            return index
+    return None
+
+
 def resolve_path(url_path: str) -> Path | None:
     raw = unquote(url_path.split("?", 1)[0])
     parts = [part for part in raw.split("/") if part]
 
     if not parts or parts == ["index.html"]:
         return HOME / "index.html"
+    imagens = resolve_imagens_static(parts)
+    if imagens:
+        return imagens
     if len(parts) == 1 and parts[0] in {
         "styles.css",
         "app.js",
@@ -104,7 +143,7 @@ def resolve_path(url_path: str) -> Path | None:
                 index = root / "index.html"
                 if index.is_file():
                     return index
-    return None
+    return resolve_home_static(parts)
 
 
 class LabHandler(BaseHTTPRequestHandler):
@@ -129,7 +168,11 @@ class LabHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 return
 
-        if len(parts) == 2 and not parsed.path.endswith("/"):
+        if (
+            len(parts) == 2
+            and not parsed.path.endswith("/")
+            and (parts[0], parts[1]) in ROUTES
+        ):
             self.send_response(301)
             self.send_header("Location", parsed.path + "/")
             self.end_headers()

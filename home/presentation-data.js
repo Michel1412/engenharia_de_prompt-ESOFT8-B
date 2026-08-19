@@ -1,4 +1,4 @@
-/** Conteúdo do deck — só evidência dos resumes/prompts. Sem inventar tokens. */
+/** Conteudo do deck — so evidencia dos resumes/prompts. Sem inventar tokens. */
 window.PRESENTATION_SLIDES = [
   {
     id: "capa",
@@ -40,7 +40,7 @@ window.PRESENTATION_SLIDES = [
       },
       {
         label: "Web (AI Studio)",
-        text: "System (regras HTML/CSS/JS + 4 cenários) + user de criação + few-shot.",
+        text: "System (HTML/CSS/JS + funcionalidades + 4 cenários) + user Build com few-shot; 2ª chamada para melhoria visual.",
       },
       {
         label: "Gemini VeryHigh",
@@ -63,7 +63,7 @@ window.PRESENTATION_SLIDES = [
       },
       {
         label: "Few-shot (Web)",
-        text: "4 exemplos de bandeira, flood fill e troca de cenário no prompt de Build.",
+        text: "4 exemplos: (1) botão direito coloca bandeira; (2) direito de novo remove; (3) célula 0 → flood fill; (4) cenário Noite só muda aparência, não o estado.",
       },
       {
         label: "XML + role (Gemini VeryHigh)",
@@ -73,21 +73,52 @@ window.PRESENTATION_SLIDES = [
     note: "JSON mode da API (resposta forçada em JSON) não foi usado. O JSON do Grok é o system prompt, não o formato de saída.",
   },
   {
+    id: "web-projeto",
+    title: "Campo Minado Web",
+    kicker: "Gemini 3.7 Flash · AI Studio Build · campo_minado_web",
+    list: [
+      {
+        label: "Ferramenta / modelo",
+        text: "Google AI Studio Build + Gemini API (curadoria). gemini-3.7-flash · service tier standard · thinking level padrão (não especificado).",
+      },
+      {
+        label: "Dificuldades",
+        text: "Fácil 9×9 (10 minas) · Médio 16×16 (40) · Difícil 16×30 (99).",
+      },
+      {
+        label: "Cenários",
+        text: "Clássico Verde, Noite, Neve, Deserto — troca só aparência; não reinicia partida nem move minas.",
+      },
+      {
+        label: "Build 1 — criação",
+        text: "Primeira versão funcional + few-shot · sucesso · tokens não coletados.",
+      },
+      {
+        label: "Build 2 — cenários",
+        text: "Melhoria visual dos 4 temas sem alterar lógica · sucesso · tokens não coletados.",
+      },
+    ],
+    note: "22 arquivos gerados · app AI Studio: ai.studio/apps/6da0ac09-9b9e-409f-8c75-aec7fa93e646",
+  },
+  {
     id: "curadoria",
     title: "Curadoria de contexto",
     kicker: "Testes A × B — Gemini API (Web)",
     body: [
-      "Mesma família de modelo; diferença só no tamanho/contexto do prompt de teste.",
+      "Mesma pergunta nos dois testes: adicionar descrição da dificuldade (ex.: «9 × 9 — 10 minas») abaixo do seletor, sem alterar outras funções.",
+      "Teste A: DifficultySelector.tsx completo · Teste B: só o trecho relevante.",
     ],
     table: {
-      headers: ["Chamada", "Input", "Output"],
+      headers: ["Chamada", "In", "Out", "Thinking", "Total"],
       rows: [
-        ["Teste A — contexto completo", "751", "774"],
-        ["Teste B — contexto curado", "308", "368"],
-        ["Soma evidenciada", "1.059", "1.142"],
+        ["Teste A — contexto completo", "751", "774", "—", "2.808"],
+        ["Teste B — contexto curado", "308", "368", "651", "1.327"],
+        ["Redução A → B", "−59,0%", "−52,5%", "—", "—"],
       ],
     },
-    note: "Chamadas Build (criação + cenários) não tiveram tokens coletados.",
+    formula:
+      "Custo A: US$ 0,00346575 · Custo B: US$ 0,00161100 · Redução de custo ~53,5%.",
+    note: "Conclusão: contexto curado reduz tokens e custo sem perder informação necessária. Chamadas Build (criação + cenários): tokens não coletados.",
   },
   {
     id: "numeros",
@@ -107,22 +138,36 @@ window.PRESENTATION_SLIDES = [
           "Auto",
           "76.008",
           "22.303",
-          "—",
-          "Included · sem USD unitário",
+          "$1,25 / $6",
+          "≈ US$ 0,229 (Auto Cost; CSV Included)",
+        ],
+        [
+          "Web A",
+          "751",
+          "774",
+          "$0,75 / $3,75",
+          "US$ 0,00346575",
+        ],
+        [
+          "Web B",
+          "308",
+          "368",
+          "$0,75 / $3,75",
+          "US$ 0,00161100",
         ],
         [
           "Web A+B",
           "1.059",
           "1.142",
           "$0,75 / $3,75",
-          "US$ 0,00507675 hipotético · free tier R$0",
+          "US$ 0,00507675 · −53,5% vs A",
         ],
         [
           "Gemini VeryHigh",
-          "8",
-          "693",
+          "245",
+          "34.223",
           "$0,75 / $3,75",
-          "Pendente — poema, não o jogo",
+          "US$ 0,12852000",
         ],
       ],
     },
@@ -133,7 +178,33 @@ window.PRESENTATION_SLIDES = [
       { label: "Auto out", value: 22303 },
     ],
     formula:
-      "Grok: (102956/1e6)×4 + (17167/1e6)×12 = US$ 0,617828 · Web: soma A+B já calculada no resume. Fonte Grok: usage-events-2026-08-17 (2).csv, 21:22:41 UTC.",
+      "Auto: (76008/1e6)×1,25 + (22303/1e6)×6 ≈ US$ 0,229 · Grok: (102956/1e6)×4 + (17167/1e6)×12 ≈ US$ 0,618 · VeryHigh: (245/1e6)×0,75 + (34223/1e6)×3,75 = US$ 0,12852000 · Web B: US$ 0,001611 · Web A: US$ 0,00346575.",
+    note: "VeryHigh: usageMetadata do projeto completo (gemini-3.7-flash) — 31 arquivos, 4.897 linhas. CSV marca Cost = Included nos dois (Pro). Tarifas são preço de lista; Auto Cost não aparece no export.",
+  },
+  {
+    id: "evidencias",
+    title: "Prints de evidência",
+    kicker: "Pasta imagens/ no repositório — uma subpasta por agente",
+    body: [
+      "Capturas em imagens/{agente}/ no repositório (enunciado §4). JSON da API nos testes A/B.",
+      "Gemini Web: 11 prints — system, Build 1 e 2, jogo, código, tokens e comparação A×B.",
+      "Gemini VeryHigh: usageMetadata do projeto completo (245 in · 34.223 out).",
+    ],
+    links: [
+      { label: "Abrir pasta imagens/", href: "imagens/" },
+      { label: "Cursor Auto (pasta)", href: "imagens/Cursor Auto/" },
+      { label: "Cursor Auto — create-rule-system.png", href: "imagens/Cursor Auto/create-rule-system.png" },
+      { label: "Cursor Auto — user-prompt-cot.png", href: "imagens/Cursor Auto/user-prompt-cot.png" },
+      { label: "Cursor Auto — agente-concluido.png", href: "imagens/Cursor Auto/agente-concluido.png" },
+      { label: "Grok 4.6 High Fast (pasta)", href: "imagens/Grok 4.6 High Fast/" },
+      { label: "Grok — agente-concluido.png", href: "imagens/Grok 4.6 High Fast/agente-concluido.png" },
+      { label: "Gemini Web — campo_minado_web (11 prints)", href: "imagens/Gemini Web/" },
+      { label: "Gemini Web — 05 chamada 02 (cenários)", href: "imagens/Gemini Web/05-chamada-02-prompt.png" },
+      { label: "Gemini Web — 06 resultado chamada 02", href: "imagens/Gemini Web/06-chamada-02-resultado.png" },
+      { label: "Gemini Web — 13 comparação A×B", href: "imagens/Gemini Web/13-comparacao-contexto.png" },
+      { label: "Gemini VeryHigh (pasta)", href: "imagens/Gemini VeryHigh/" },
+      { label: "Gemini VeryHigh — tokens projeto completo", href: "imagens/Gemini VeryHigh/tokens-projeto-completo.png" },
+    ],
   },
   {
     id: "leitura-grok",
@@ -165,7 +236,7 @@ window.PRESENTATION_SLIDES = [
       },
       {
         label: "Gemini VeryHigh",
-        text: "Engine separada da UI, flood fill, chording e dificuldades clássicas + custom.",
+        text: "Engine separada da UI, flood fill, chording e dificuldades clássicas + custom. 31 arquivos · 4.897 linhas · gemini-3.7-flash.",
       },
       {
         label: "Auto",
@@ -173,7 +244,7 @@ window.PRESENTATION_SLIDES = [
       },
       {
         label: "Web",
-        text: "HTML/CSS/JS sem framework; quatro temas: Clássico Verde, Noite, Neve, Deserto.",
+        text: "HTML/CSS/JS; Fácil/Médio/Difícil (9×9/16×16/16×30); 4 temas; bandeiras, flood fill, timer, contador e reinício.",
       },
     ],
   },
@@ -188,11 +259,11 @@ window.PRESENTATION_SLIDES = [
       },
       {
         label: "Gemini usageMetadata",
-        text: "promptTokenCount / candidates + thoughts (VeryHigh tokens.txt; Web testes A/B).",
+        text: "promptTokenCount, candidatesTokenCount, totalTokenCount — VeryHigh projeto completo (245 / 34.223; tokens-projeto-completo.png) · Web testes A/B (JSON + prints 11–13).",
       },
       {
         label: "AI Studio Build",
-        text: "Criação do Web — tokens das chamadas Build não coletados.",
+        text: "Web: 2 chamadas (criação + cenários visuais) — tokens não coletados; thinking level padrão.",
       },
     ],
   },
@@ -214,21 +285,32 @@ window.PRESENTATION_SLIDES = [
   {
     id: "equipe",
     title: "Equipe e URL",
-    kicker: "Placeholders — colar depois",
+    kicker: "Entrega formal — enunciado §18–20",
     placeholders: [
-      { label: "Integrante 1", value: "Nome · RA" },
-      { label: "Integrante 2", value: "Nome · RA" },
-      { label: "Integrante 3", value: "Nome · RA" },
-      { label: "URL publicada", value: "https://…" },
+      {
+        label: "Joao Pedro Souza Peixoto Saraiva",
+        value: "23034350-2",
+      },
+      { label: "Michel Bocchi Junior", value: "23220783-2" },
+      {
+        label: "Luiz Henrique Peschieira Romano",
+        value: "25363238-2",
+      },
+      {
+        label: "André Felipe Ferrari de Azevedo",
+        value: "22120196-2",
+      },
+      {
+        label: "URL publicada",
+        value: "https://michel1412.github.io/engenharia_de_prompt-ESOFT8-B/",
+      },
+      {
+        label: "Repositório GitHub",
+        value: "https://github.com/Michel1412/engenharia_de_prompt-ESOFT8-B",
+      },
     ],
     pendencias: [
-      "Prints de evidência (PNG/JPG) — enunciado exige; não há imagens no repo.",
-      "Gemini VeryHigh: tokens.txt é um poema, não a geração do jogo.",
-      "Web Build (criação + cenários): tokens não coletados.",
-      "Auto: custo unitário USD ausente (Included).",
-      "Grok: fatura Included; US$ 0,617828 é só preço de lista.",
-      "README ainda no formato do laboratório (não na ordem do item 8 do enunciado).",
-      "Entrega GitHub + @pedrosatin + URL no ar — fora deste recorte de UI.",
+      "Adicionar @pedrosatin como collaborator no GitHub.",
     ],
   },
 ];

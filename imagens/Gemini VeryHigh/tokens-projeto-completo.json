@@ -1,0 +1,16 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 245,
+    "candidatesTokenCount": 34223,
+    "totalTokenCount": 34468,
+    "cachedContentTokenCount": 0
+  },
+  "summary": {
+    "projectName": "Campo Minado Pro",
+    "totalFiles": 31,
+    "totalLines": 4897,
+    "totalBytes": 175146,
+    "model": "gemini-3.7-flash",
+    "calculatedAt": "2026-08-18T23:45:38.295Z"
+  }
+}

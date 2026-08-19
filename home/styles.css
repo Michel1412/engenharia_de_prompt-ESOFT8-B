@@ -254,6 +254,44 @@ code {
   padding-right: 4px;
 }
 
+.slide-panel--evidence {
+  max-width: min(920px, 100%);
+}
+
+.slide--evidence {
+  display: flex;
+  flex-direction: column;
+}
+
+.slide--evidence .slide-title {
+  margin-bottom: 0.65rem;
+  font-size: clamp(1.35rem, 3.2vw, 2rem);
+}
+
+.slide-evidence--hero {
+  grid-template-columns: 1fr;
+  margin-top: 0.35rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.evidence-card--hero {
+  display: flex;
+  flex-direction: column;
+  min-height: min(52dvh, 520px);
+}
+
+.evidence-card--hero img {
+  flex: 1;
+  width: 100%;
+  min-height: min(48dvh, 480px);
+  max-height: min(58dvh, 560px);
+  object-fit: contain;
+  object-position: center top;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+}
+
 .slide-kicker {
   margin: 0 0 8px;
   font-size: 0.78rem;
@@ -278,6 +316,42 @@ code {
   font-size: 1.05rem;
   line-height: 1.55;
   max-width: 38rem;
+}
+
+.slide-links {
+  list-style: none;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.slide-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    border-color 140ms ease,
+    background 140ms ease;
+}
+
+.slide-links a:hover {
+  border-color: var(--accent);
+  background: rgba(28, 44, 32, 0.95);
+}
+
+.slide-links a::after {
+  content: "↗";
+  font-size: 0.82rem;
+  opacity: 0.75;
 }
 
 .slide-chips {
@@ -416,6 +490,39 @@ code {
   padding-left: 0.75rem;
   border-left: 3px solid var(--warn);
   color: #d8c48a;
+}
+
+.slide-evidence {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.evidence-card {
+  margin: 0;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.evidence-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: contain;
+  object-position: top center;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.evidence-card figcaption {
+  padding: 8px 10px;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
 }
 
 .placeholders {

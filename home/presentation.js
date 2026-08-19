@@ -16,6 +16,13 @@
     return Math.round(n).toLocaleString("pt-BR");
   }
 
+  function assetHref(href) {
+    return href
+      .split("/")
+      .map((part) => (part ? encodeURIComponent(part) : ""))
+      .join("/");
+  }
+
   function renderSlideHtml(slide) {
     const parts = [];
     if (slide.kicker) {
@@ -26,6 +33,17 @@
     if (slide.body) {
       parts.push(
         `<div class="slide-body">${slide.body.map((p) => `<p>${p}</p>`).join("")}</div>`,
+      );
+    }
+
+    if (slide.links) {
+      parts.push(
+        `<ul class="slide-links">${slide.links
+          .map(
+            (link) =>
+              `<li><a href="${assetHref(link.href)}" target="_blank" rel="noopener">${link.label}</a></li>`,
+          )
+          .join("")}</ul>`,
       );
     }
 
