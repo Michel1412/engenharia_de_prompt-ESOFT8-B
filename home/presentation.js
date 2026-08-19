@@ -94,10 +94,6 @@
       parts.push(`<p class="slide-formula">${slide.formula}</p>`);
     }
 
-    if (slide.note) {
-      parts.push(`<p class="slide-note">${slide.note}</p>`);
-    }
-
     if (slide.placeholders) {
       parts.push(
         `<dl class="placeholders">${slide.placeholders
@@ -106,14 +102,6 @@
               `<div><dt>${p.label}</dt><dd class="is-placeholder">${p.value}</dd></div>`,
           )
           .join("")}</dl>`,
-      );
-    }
-
-    if (slide.pendencias) {
-      parts.push(
-        `<div class="pendencias"><p class="pendencias__title">Pendências (não inventar)</p><ul>${slide.pendencias
-          .map((p) => `<li>${p}</li>`)
-          .join("")}</ul></div>`,
       );
     }
 

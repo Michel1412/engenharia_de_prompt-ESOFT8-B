@@ -51,7 +51,7 @@ window.PRESENTATION_SLIDES = [
   {
     id: "tecnicas",
     title: "Técnicas usadas",
-    kicker: "O que está evidenciado — sem inventar JSON mode",
+    kicker: "O que está evidenciado",
     list: [
       {
         label: "JSON system (Grok)",
@@ -70,7 +70,6 @@ window.PRESENTATION_SLIDES = [
         text: "Instruções estruturadas em tags; engine vs UI, flood fill, chording.",
       },
     ],
-    note: "JSON mode da API (resposta forçada em JSON) não foi usado. O JSON do Grok é o system prompt, não o formato de saída.",
   },
   {
     id: "web-projeto",
@@ -91,14 +90,17 @@ window.PRESENTATION_SLIDES = [
       },
       {
         label: "Build 1 — criação",
-        text: "Primeira versão funcional + few-shot · sucesso · tokens não coletados.",
+        text: "Primeira versão funcional + few-shot · sucesso.",
       },
       {
         label: "Build 2 — cenários",
-        text: "Melhoria visual dos 4 temas sem alterar lógica · sucesso · tokens não coletados.",
+        text: "Melhoria visual dos 4 temas sem alterar lógica · sucesso.",
+      },
+      {
+        label: "Arquivos",
+        text: "22 arquivos gerados · app AI Studio: ai.studio/apps/6da0ac09-9b9e-409f-8c75-aec7fa93e646",
       },
     ],
-    note: "22 arquivos gerados · app AI Studio: ai.studio/apps/6da0ac09-9b9e-409f-8c75-aec7fa93e646",
   },
   {
     id: "curadoria",
@@ -107,6 +109,7 @@ window.PRESENTATION_SLIDES = [
     body: [
       "Mesma pergunta nos dois testes: adicionar descrição da dificuldade (ex.: «9 × 9 — 10 minas») abaixo do seletor, sem alterar outras funções.",
       "Teste A: DifficultySelector.tsx completo · Teste B: só o trecho relevante.",
+      "Conclusão: contexto curado reduz tokens e custo sem perder informação necessária.",
     ],
     table: {
       headers: ["Chamada", "In", "Out", "Thinking", "Total"],
@@ -118,12 +121,11 @@ window.PRESENTATION_SLIDES = [
     },
     formula:
       "Custo A: US$ 0,00346575 · Custo B: US$ 0,00161100 · Redução de custo ~53,5%.",
-    note: "Conclusão: contexto curado reduz tokens e custo sem perder informação necessária. Chamadas Build (criação + cenários): tokens não coletados.",
   },
   {
     id: "numeros",
     title: "Números e custo",
-    kicker: "CSV 17/08 · resumes — sem estimativa inventada",
+    kicker: "CSV 17/08 · resumes",
     table: {
       headers: ["Experimento", "In", "Out", "Preço / 1M", "Custo"],
       rows: [
@@ -179,7 +181,6 @@ window.PRESENTATION_SLIDES = [
     ],
     formula:
       "Auto: (76008/1e6)×1,25 + (22303/1e6)×6 ≈ US$ 0,229 · Grok: (102956/1e6)×4 + (17167/1e6)×12 ≈ US$ 0,618 · VeryHigh: (245/1e6)×0,75 + (34223/1e6)×3,75 = US$ 0,12852000 · Web B: US$ 0,001611 · Web A: US$ 0,00346575.",
-    note: "VeryHigh: usageMetadata do projeto completo (gemini-3.7-flash) — 31 arquivos, 4.897 linhas. CSV marca Cost = Included nos dois (Pro). Tarifas são preço de lista; Auto Cost não aparece no export.",
   },
   {
     id: "evidencias",
@@ -187,7 +188,7 @@ window.PRESENTATION_SLIDES = [
     kicker: "Pasta imagens/ no repositório — uma subpasta por agente",
     body: [
       "Capturas em imagens/{agente}/ no repositório (enunciado §4). JSON da API nos testes A/B.",
-      "Gemini Web: 11 prints — system, Build 1 e 2, jogo, código, tokens e comparação A×B.",
+      "Gemini Web: 11 prints — system, Build 1 e 2, projeto, código, tokens e comparação A×B.",
       "Gemini VeryHigh: usageMetadata do projeto completo (245 in · 34.223 out).",
     ],
     links: [
@@ -212,6 +213,7 @@ window.PRESENTATION_SLIDES = [
     kicker: "Uma chamada · 17/08 18:22 (UTC-3)",
     body: [
       "O experimento campo_minado_Grok_46 bate com a linha cursor-grok-4.6-high-fast às 21:22:41 UTC.",
+      "Arquivo gerado: 1 (index.html). Tempo: 3m 5s.",
     ],
     table: {
       headers: ["Campo do CSV", "Valor"],
@@ -223,7 +225,6 @@ window.PRESENTATION_SLIDES = [
         ["Cost", "Included"],
       ],
     },
-    note: "Arquivo gerado: 1 (index.html). Tempo: 3m 5s. Cache read não entra na coluna In da tabela comparativa — o laboratório usa input sem cache write, como nos outros resumes.",
   },
   {
     id: "fortes",
@@ -263,7 +264,7 @@ window.PRESENTATION_SLIDES = [
       },
       {
         label: "AI Studio Build",
-        text: "Web: 2 chamadas (criação + cenários visuais) — tokens não coletados; thinking level padrão.",
+        text: "Web: 2 chamadas (criação + cenários visuais); thinking level padrão.",
       },
     ],
   },
@@ -308,9 +309,6 @@ window.PRESENTATION_SLIDES = [
         label: "Repositório GitHub",
         value: "https://github.com/Michel1412/engenharia_de_prompt-ESOFT8-B",
       },
-    ],
-    pendencias: [
-      "Adicionar @pedrosatin como collaborator no GitHub.",
     ],
   },
 ];
